@@ -13,5 +13,6 @@
 1. Ajouter nix avec :
     - `curl -L https://nixos.org/nix/install | sh`
 1. Se déconnecter et se connecter
-1. Linker eos-dotfiles/.config/nixpkgs/config.nix
+1. Linker les dotfiles
 1. Installer les paquets avec `nix-env -iA nixpkgs.florianfmmartin`
+1. Installer dConfEditor du AppStore
