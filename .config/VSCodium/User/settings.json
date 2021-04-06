@@ -1,0 +1,53 @@
+{
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.colorfulSyntax": true,
+    "gruvboxMaterial.darkWorkbench": "high-contrast",
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.italicKeywords": true,
+    "editor.fontLigatures": true,
+    "editor.formatOnType": true,
+    "files.autoSave": "afterDelay",
+    "editor.renderWhitespace": "all",
+    "editor.fontFamily": "'Victor Mono'",
+    "editor.formatOnSave": true,
+    "editor.cursorBlinking": "solid",
+    "git.autofetch": true,
+    "editor.cursorStyle": "block-outline",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "css.validate": false,
+    "editor.quickSuggestions": {"other": true,
+        "strings": true,
+        "comments": true,
+    },
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "line",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.quickSuggestionsDelay": 1,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vetur.validation.style": false,
+    "editor.fontSize": 16,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "bracket-pair-colorizer-2.colorMode": "Independent",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.tabSize": 2,
+    "files.associations": {
+        "*.res": "reason"
+    },
+    "editor.codeLens": false,
+    "elmLS.elmFormatPath": "/home/florianfmmartin/.nvm/versions/node/v14.15.4/bin/elm-format",
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "languageServerExample.trace.server": "verbose",
+    "explorer.autoReveal": false,
+}
