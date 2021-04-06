@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/florianfmmartin/flo_overlays/pkgs'
+let g:netrw_dirhist_7='/home/florianfmmartin/.config/nixpkgs'
+let g:netrw_dirhist_6='/home/florianfmmartin'
+let g:netrw_dirhist_5='/home/florianfmmartin/git/WePUB/wepub/frontend'
+let g:netrw_dirhist_4='/home/florianfmmartin/git/WePUB/wepub/frontend/static/js'
+let g:netrw_dirhist_3='/home/florianfmmartin/git/WePUB/wepub/frontend/static/js/views'
+let g:netrw_dirhist_2='/home/florianfmmartin/git/WePUB/wepub/frontend/static/js'
+let g:netrw_dirhist_1='/home/florianfmmartin/git/WePUB/wepub'
+let g:netrw_dirhist_0='/home/florianfmmartin/git/WePUB/wepub/frontend/static/js/views'
+let g:netrw_dirhist_9='/home/florianfmmartin/git/WePUB/wepub/frontend/static/js'

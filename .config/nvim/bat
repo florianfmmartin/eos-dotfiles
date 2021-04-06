@@ -1,0 +1,178 @@
+diff --git a/.config/nvim/settings.vim b/.config/nvim/settings.vim
+index b7bf983..f3f6a0c 100644
+--- a/.config/nvim/settings.vim
++++ b/.config/nvim/settings.vim
+@@ -1,5 +1,52 @@
+ " settings
+ 
++" remaps
++nnoremap <leader>rt :call LeaderReTab(
++nnoremap <leader>rl 079lf<Space>r<CR>
++nnoremap <leader>rc :w<CR>:source ~/.config/nvim/init.vim<CR>
++nnoremap gt :bnext<CR>
++nnoremap gb :bprevious<CR>
++nnoremap ge :bdelete!<CR>
++nnoremap <leader>bn :enew<CR>
++vnoremap T $hy
++nnoremap <leader>y yyp
++nnoremap <leader><space> :noh<CR>
++nnoremap <leader>o O<Esc>
++nnoremap <C-J> <C-W><C-J>
++nnoremap <C-K> <C-W><C-K>
++nnoremap <C-L> <C-W><C-L>
++nnoremap <C-H> <C-W><C-H>
++nnoremap <leader>vk :vertical-resize -2<CR>
++nnoremap <leader>vj :vertical-resize +2<CR>
++nnoremap <leader>vv <C-w>=
++inoremap ( ()<Left>
++inoremap { {}<Left>
++inoremap [ []<Left>
++inoremap " ""<Left>
++autocmd Filetype vim inoremap " "<Space>
++autocmd Filetype cpp inoremap { {<CR>}<Up><C-O>$
++autocmd Filetype tex inoremap $ $$<Left>
++xnoremap K :move '<-2<CR>gv-gv
++xnoremap J :move '>+1<CR>gv-gv
++xnoremap < <<CR>gv-gv
++xnoremap > ><CR>gv-gv
++nnoremap <leader><leader> <Right>
++inoremap <leader><leader> <Right>
++nnoremap ; :
++nnoremap : ;
++nnoremap - $
++vnoremap - $
++xnoremap - $
++inoremap <C-Space> <C-X><C-O>
++nnoremap <Space> w
++nnoremap <BackSpace> b
++nnoremap <leader>xc :!pdflatex '%:p'<CR>
++nnoremap <leader>xv :!zathura '%:r'.pdf & disown <CR>
++inoremap <leader>¸ <c-g>u<Esc>[s1z=`]a<c-g>u
++nnoremap <leader>ef :setlocal spell spelllang=fr<CR>
++nnoremap <leader>ee :setlocal spell spelllang=en<CR>
++nnoremap <leader>es :setlocal nospell<CR>
++
+ " leader
+ let mapleader = ","
+ 
+@@ -28,9 +75,6 @@ function LeaderReTab(len, style)
+     %retab!
+ endfunction
+ 
+-nnoremap <leader>rt :call LeaderReTab(
+-nnoremap <leader>rl 079lf<Space>r<CR>
+-
+ let g:which_key_map.r = { 'name' : 'reload' }
+ let g:which_key_map.r.t = 'tabs'
+ let g:which_key_map.r.l = 'limit'
+@@ -60,18 +104,11 @@ set fillchars=vert:\|
+ hi! VertSplit ctermfg=145 guifg=#ECEFF4
+ hi! Comment cterm=bold gui=bold
+ 
+-nnoremap <leader>rc :w<CR>:source ~/.config/nvim/init.vim<CR>
+-
+ let g:which_key_map.r.c = 'config'
+ 
+ " buffers
+ set hidden
+ 
+-nnoremap gt :bnext<CR>
+-nnoremap gb :bprevious<CR>
+-nnoremap ge :bdelete!<CR>
+-nnoremap <leader>bn :enew<CR>
+-
+ let g:which_key_map.b = { 'name' : 'buffer' }
+ let g:which_key_map.b.n = 'new'
+ let g:which_key_map.b.d = 'delete'
+@@ -79,18 +116,12 @@ let g:which_key_map.b.d = 'delete'
+ " clipboard
+ set clipboard=unnamedplus
+ 
+-vnoremap T $hy
+-nnoremap <leader>y yyp
+-
+ let g:which_key_map.y = "yyp"
+ 
+ " searching
+ set ignorecase
+ 
+-nnoremap <leader><space> :noh<CR>
+-
+ " extra line management
+-nnoremap <leader>o O<Esc>
+ 
+ let g:which_key_map.o = 'extra line'
+ 
+@@ -106,16 +137,6 @@ set list
+ set splitright
+ set splitbelow
+ 
+-nnoremap <C-J> <C-W><C-J>
+-nnoremap <C-K> <C-W><C-K>
+-nnoremap <C-L> <C-W><C-L>
+-nnoremap <C-H> <C-W><C-H>
+-
+-" split resize
+-nnoremap <leader>vk :vertical-resize -2<CR>
+-nnoremap <leader>vj :vertical-resize +2<CR>
+-nnoremap <leader>vv <C-w>=
+-
+ let g:which_key_map.v = {
+             \ 'name' : 'resize',
+             \ 'k' : '++',
+@@ -127,37 +148,6 @@ let g:which_key_map.v = {
+ set completeopt=menuone
+ set shortmess+=c
+ 
+-inoremap ( ()<Left>
+-inoremap { {}<Left>
+-inoremap [ []<Left>
+-inoremap " ""<Left>
+-
+-autocmd Filetype vim inoremap " "<Space>
+-autocmd Filetype cpp inoremap { {<CR>}<Up><C-O>$
+-autocmd Filetype tex inoremap $ $$<Left>
+-
+-" move line visual
+-xnoremap K :move '<-2<CR>gv-gv
+-xnoremap J :move '>+1<CR>gv-gv
+-xnoremap < <<CR>gv-gv
+-xnoremap > ><CR>gv-gv
+-
+-" naviguation
+-nnoremap <leader><leader> <Right>
+-inoremap <leader><leader> <Right>
+-nnoremap ; :
+-nnoremap : ;
+-nnoremap - $
+-vnoremap - $
+-xnoremap - $
+-inoremap <C-Space> <C-X><C-O>
+-nnoremap <Space> w
+-nnoremap <BackSpace> b
+-
+-" latex
+-nnoremap <leader>xc :!pdflatex '%:p'<CR>
+-nnoremap <leader>xv :!zathura '%:r'.pdf & disown <CR>
+-
+ let g:which_key_map.x = {
+             \ 'name' : 'latex',
+             \ 'c' : 'compile',
+@@ -165,16 +155,11 @@ let g:which_key_map.x = {
+             \ }
+ 
+ " highlight yank
+-au TextYankPost * silent! lua vim.highlight.on_yank() {timeout=800}
++let g:highlightedyank_highlight_duration = 300
+ 
+ " spell checking
+ au Filetype tex setlocal spell spelllang=fr
+ 
+-inoremap <leader>¸ <c-g>u<Esc>[s1z=`]a<c-g>u
+-nnoremap <leader>ef :setlocal spell spelllang=fr<CR>
+-nnoremap <leader>ee :setlocal spell spelllang=en<CR>
+-nnoremap <leader>es :setlocal nospell<CR>
+-
+ let g:which_key_map.e = {
+             \ 'name' : 'spell',
+             \ 's' : 'stop',
