@@ -3,14 +3,21 @@
 " leader
 let mapleader = ","
 
+" colorscheme
+set termguicolors
+set background=dark
+
+" gruvbox
+let g:gruvbox_material_background="medium"
+colorscheme gruvbox-material
+
 " tab and indent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-set nosmartindent
-set nosmarttab
+set mouse=a
 
 au Filetype cpp setlocal noexpandtab
 au Filetype ocaml setlocal noexpandtab tabstop=2
@@ -29,11 +36,7 @@ function LeaderReTab(len, style)
 endfunction
 
 nnoremap <leader>rt :call LeaderReTab(
-nnoremap <leader>rl 079lf<Space>r<CR>
-
-let g:which_key_map.r = { 'name' : 'reload' }
-let g:which_key_map.r.t = 'tabs'
-let g:which_key_map.r.l = 'limit'
+nnoremap <leader>rl 060lf<Space>r<CR>
 
 " numbers column
 set number
@@ -49,6 +52,7 @@ set showbreak=>-->
 set nocompatible
 filetype plugin on
 syntax on
+set noshowmode
 set conceallevel=0
 set lazyredraw
 set showmatch
@@ -57,43 +61,30 @@ set scrolloff=8
 set path+=**
 set timeoutlen=300
 set cursorline
-set fillchars=vert:\|
+set fillchars=vert:\ 
 hi! VertSplit ctermfg=145 guifg=#ECEFF4
 hi! Comment cterm=bold gui=bold
 
 nnoremap <leader>rc :w<CR>:source ~/.config/nvim/init.vim<CR>
 
-let g:which_key_map.r.c = 'config'
+inoremap ( ()<Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap < <><Left>
 
 " buffers
 set hidden
 
 nnoremap gt :bnext<CR>
 nnoremap gb :bprevious<CR>
-nnoremap ge :bdelete!<CR>
-nnoremap <leader>bn :enew<CR>
-
-let g:which_key_map.b = { 'name' : 'buffer' }
-let g:which_key_map.b.n = 'new'
-let g:which_key_map.b.d = 'delete'
 
 " clipboard
-set clipboard=unnamedplus
-
-vnoremap T $hy
-nnoremap <leader>y yyp
-
-let g:which_key_map.y = "yyp"
+" set clipboard=unnamedplus
 
 " searching
 set ignorecase
 
 nnoremap <leader><space> :noh<CR>
-
-" extra line management
-nnoremap <leader>o O<Esc>
-
-let g:which_key_map.o = 'extra line'
 
 " fold
 set foldlevelstart=10
@@ -112,30 +103,9 @@ nnoremap <C-Down> <C-W><C-J>
 nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 
-" split resize
-nnoremap <leader>vk :vertical-resize -2<CR>
-nnoremap <leader>vj :vertical-resize +2<CR>
-nnoremap <leader>vv <C-w>=
-
-let g:which_key_map.v = {
-            \ 'name' : 'resize',
-            \ 'k' : '++',
-            \ 'j' : '--',
-            \ 'v' : 'reset',
-            \ }
-
 " autocompletion setup
 set completeopt=menuone
 set shortmess+=c
-
-inoremap ( ()<Left>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap " ""<Left>
-
-autocmd Filetype vim inoremap " "<Space>
-autocmd Filetype cpp inoremap { {<CR>}<Up><C-O>$
-autocmd Filetype tex inoremap $ $$<Left>
 
 " move line visual
 xnoremap K :move '<-2<CR>gv-gv
@@ -144,8 +114,6 @@ xnoremap < <<CR>gv-gv
 xnoremap > ><CR>gv-gv
 
 " naviguation
-nnoremap <leader><leader> <Right>
-inoremap <leader><leader> <Right>
 nnoremap ; :
 nnoremap : ;
 nnoremap - $
@@ -154,16 +122,6 @@ xnoremap - $
 inoremap <C-Space> <C-X><C-O>
 nnoremap <Space> w
 nnoremap <BackSpace> b
-
-" latex
-nnoremap <leader>xc :!pdflatex '%:p'<CR>
-nnoremap <leader>xv :!zathura '%:r'.pdf & disown <CR>
-
-let g:which_key_map.x = {
-            \ 'name' : 'latex',
-            \ 'c' : 'compile',
-            \ 'v' : 'view',
-            \ }
 
 " highlight yank
 au TextYankPost * silent! lua vim.highlight.on_yank() {timeout=800}
@@ -177,10 +135,11 @@ nnoremap <leader>ef :setlocal spell spelllang=fr<CR>
 nnoremap <leader>ee :setlocal spell spelllang=en<CR>
 nnoremap <leader>es :setlocal nospell<CR>
 
-let g:which_key_map.e = {
-            \ 'name' : 'spell',
-            \ 's' : 'stop',
-            \ 'f' : 'français',
-            \ 'e' : 'english',
-            \ }
+" terminal settings
 
+tnoremap <leader><leader> <C-\><C-n>
+nnoremap <leader>tt :terminal<CR>
+nnoremap <leader>te :e term://
+nnoremap <leader>tg :e term://lazygit<CR>
+
+autocmd TermOpen * exec "normal i"
