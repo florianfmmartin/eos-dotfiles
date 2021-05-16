@@ -1,0 +1,1 @@
+[2021-05-04 10:47:00.891] [renderer1] [error] ENOENT: no such file or directory, open '/home/fmartin/.config/VSCodium/User/globalStorage/vscodevim.vim/.registers': Error: ENOENT: no such file or directory, open '/home/fmartin/.config/VSCodium/User/globalStorage/vscodevim.vim/.registers'

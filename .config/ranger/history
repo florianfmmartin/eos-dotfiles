@@ -1,28 +1,3 @@
-open_with imagetops
-find unityhub
-find q
-find llfsk
-find appli
-find applicati
-rename ranger
-open_with 
-open_with nvim
-find lil
-rename .e
-find d8k
-mkdir Teleinfo
-touch Devoir1-111265478.wd
-find lily
-find board
-find boardso
-mkdir dev1
-rename Devoir1-111265478e.md
-rename Devoir1-111265478.md
-rename Devoir1-111265478-1.md
-rename Devoir1-111265478-2.md
-rename Devoir1-111265478-3.md
-rename Devoir1-111265478-4.md
-rename Devoir1-111265478-5.md
 rename Devoir1-111265478-2-2.md
 rename Devoir1-111265478-2-1.md
 rename Devoir1-111265478-3-1.md
@@ -36,4 +11,40 @@ touch
 touch noms.txt
 find p3d
 mkdir debian
+rename weather-icons
+rename png
+mkdir forecast highlights location-search
+mkdir location-search
+touch a, b
+touch ForecastContainer
+rename ForecastContainer.vue
+touch ForecastCard.vue
+touch HighlightsContainer
+touch HighlightsCard
+touch SearchTab
+touch SearchInput.vue
+rename SearchTab.vue
+rename HighlightsContainer.vue
+rename HighlightsCard.vue
+touch WeatherSection.vue
+rename weather
+rename weather-svg
+mkdir forecast
+mkdir highlights
+touch HighlightsSection
+rename HighlightsSection.vue
+touch ForecastSection.vue
+rename CardSection.vue
+mkdir test
+find wh
+unzip %f
+!unzip %f
+
+mkdir libeo
+shell unzip libeoarborescenseux_assets_2021-05-13_v30.zip
+find code
+rename cloc.svg
+rename clock.svg
+rename clap.svg
+find té
 delete

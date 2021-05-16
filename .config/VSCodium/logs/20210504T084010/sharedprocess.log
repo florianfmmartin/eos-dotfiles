@@ -1,0 +1,13 @@
+[2021-05-04 08:40:13.940] [sharedprocess] [info] Installing extension: sainnhe.gruvbox-material
+[2021-05-04 08:40:15.220] [sharedprocess] [info] Downloaded extension: sainnhe.gruvbox-material undefined
+[2021-05-04 08:40:15.386] [sharedprocess] [info] Extracted extension to /home/fmartin/.vscode-oss/extensions/.de68bbc1-384d-4902-bf3a-02cf0d1c4ba6: sainnhe.gruvbox-material
+[2021-05-04 08:40:15.392] [sharedprocess] [info] Renamed to /home/fmartin/.vscode-oss/extensions/sainnhe.gruvbox-material-6.4.1
+[2021-05-04 08:40:15.394] [sharedprocess] [info] Installation completed. sainnhe.gruvbox-material
+[2021-05-04 08:40:15.404] [sharedprocess] [info] Extensions installed successfully: sainnhe.gruvbox-material
+[2021-05-04 08:40:25.133] [sharedprocess] [info] Installing extension: sonarsource.sonarlint-vscode
+[2021-05-04 08:40:45.349] [sharedprocess] [info] Downloaded extension: sonarsource.sonarlint-vscode undefined
+[2021-05-04 08:40:46.431] [sharedprocess] [info] Extracted extension to /home/fmartin/.vscode-oss/extensions/.6bf1d340-bbb0-4a61-9333-a97839def6d7: sonarsource.sonarlint-vscode
+[2021-05-04 08:40:46.441] [sharedprocess] [info] Renamed to /home/fmartin/.vscode-oss/extensions/sonarsource.sonarlint-vscode-1.21.0
+[2021-05-04 08:40:46.443] [sharedprocess] [info] Installation completed. sonarsource.sonarlint-vscode
+[2021-05-04 08:40:46.539] [sharedprocess] [info] Extensions installed successfully: sonarsource.sonarlint-vscode
+[2021-05-04 08:40:52.000] [sharedprocess] [info] Starting to clean up unused language packs.

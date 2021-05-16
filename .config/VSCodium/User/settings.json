@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Gruvbox Material Dark",
     "gruvboxMaterial.colorfulSyntax": true,
     "gruvboxMaterial.darkWorkbench": "high-contrast",
     "gruvboxMaterial.darkContrast": "hard",
@@ -39,7 +38,6 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.tabSize": 2,
     "files.associations": {
         "*.res": "reason"
     },
@@ -50,4 +48,15 @@
     "workbench.startupEditor": "newUntitledFile",
     "languageServerExample.trace.server": "verbose",
     "explorer.autoReveal": false,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "todo-tree.tree.showScanModeButton": false,
+    "bracket-pair-colorizer-2.colors": [
+        "#dfbf8e",
+        "#89B482",
+        "#D3869B",
+        "#7DAEA3"
+    ],
+    "bracket-pair-colorizer-2.excludedLanguages": [
+    ],
+    "sonarlint.ls.javaHome": "/home/fmartin/.vscode-oss/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.11+9-jre",
 }

@@ -1,0 +1,17 @@
+[2021-05-02 17:59:55.102] [exthost] [info] extension host started
+[2021-05-02 17:59:55.422] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":false,"extensionId":{"value":"vscode.emmet","_lower":"vscode.emmet"},"activationEvent":"onLanguage:html"}
+[2021-05-02 17:59:55.422] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/codium/162/usr/share/codium/resources/app/extensions/emmet/dist/node/emmetNodeMain
+[2021-05-02 17:59:55.431] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"extensionId":{"value":"vscode.html-language-features","_lower":"vscode.html-language-features"},"activationEvent":"onLanguage:html"}
+[2021-05-02 17:59:55.431] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/codium/162/usr/share/codium/resources/app/extensions/html-language-features/client/dist/node/htmlClientMain
+[2021-05-02 17:59:55.452] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"extensionId":{"value":"vscode.debug-auto-launch","_lower":"vscode.debug-auto-launch"},"activationEvent":"*"}
+[2021-05-02 17:59:55.452] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/codium/162/usr/share/codium/resources/app/extensions/debug-auto-launch/dist/extension
+[2021-05-02 17:59:55.455] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"extensionId":{"value":"vscode.github","_lower":"vscode.github"},"activationEvent":"*"}
+[2021-05-02 17:59:55.455] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/codium/162/usr/share/codium/resources/app/extensions/git/dist/main
+[2021-05-02 17:59:55.475] [exthost] [info] ExtensionService#_doActivateExtension sainnhe.gruvbox-material {"startup":true,"extensionId":{"value":"sainnhe.gruvbox-material","_lower":"sainnhe.gruvbox-material"},"activationEvent":"*"}
+[2021-05-02 17:59:55.475] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/fmartin/.vscode-oss/extensions/sainnhe.gruvbox-material-6.4.0/out/extension.js
+[2021-05-02 17:59:55.501] [exthost] [info] ExtensionService#_doActivateExtension vscodevim.vim {"startup":true,"extensionId":{"value":"vscodevim.vim","_lower":"vscodevim.vim"},"activationEvent":"*"}
+[2021-05-02 17:59:55.501] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/fmartin/.vscode-oss/extensions/vscodevim.vim-1.20.0/out/extension
+[2021-05-02 17:59:55.554] [exthost] [info] ExtensionService#_doActivateExtension zhuangtongfa.material-theme {"startup":true,"extensionId":{"value":"zhuangtongfa.material-theme","_lower":"zhuangtongfa.material-theme"},"activationEvent":"*"}
+[2021-05-02 17:59:55.554] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/fmartin/.vscode-oss/extensions/zhuangtongfa.material-theme-3.10.13/out/extension.js
+[2021-05-02 17:59:56.073] [exthost] [info] extension host terminating: parent process 50507 does not exist anymore: kill ESRCH (code: ESRCH) (errno: ESRCH)
+[2021-05-02 17:59:57.075] [exthost] [info] exiting with code 0

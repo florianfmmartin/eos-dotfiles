@@ -47,6 +47,7 @@ let g:coc_global_extensions = [
                             \ "coc-explorer",
                             \ "coc-elixir",
                             \ "coc-erlang_ls",
+                            \ "coc-marketplace",
                             \ ]
 
 nnoremap <leader>p :CocCommand<CR>

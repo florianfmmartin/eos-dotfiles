@@ -32,3 +32,4 @@ if [ -e /home/florianfmmartin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/
 
 # add nix to desktop
 export XDG_DATA_DIRS="/home/florianfmmartin/.nix-profile/share/:$XDG_DATA_DIRS"
+PATH="$PATH:$HOME/bin"
