@@ -1,7 +1,0 @@
-[2021-05-02 18:14:25.674] [sharedprocess] [info] Starting to clean up unused language packs.
-[2021-05-02 18:17:59.129] [sharedprocess] [info] Installing extension: coenraads.bracket-pair-colorizer-2
-[2021-05-02 18:17:59.811] [sharedprocess] [info] Downloaded extension: coenraads.bracket-pair-colorizer-2 undefined
-[2021-05-02 18:18:00.023] [sharedprocess] [info] Extracted extension to /home/fmartin/.vscode-oss/extensions/.a8cbba3b-a8da-4b50-a19b-2338475e2cd2: coenraads.bracket-pair-colorizer-2
-[2021-05-02 18:18:00.028] [sharedprocess] [info] Renamed to /home/fmartin/.vscode-oss/extensions/coenraads.bracket-pair-colorizer-2-0.1.4
-[2021-05-02 18:18:00.029] [sharedprocess] [info] Installation completed. coenraads.bracket-pair-colorizer-2
-[2021-05-02 18:18:00.031] [sharedprocess] [info] Extensions installed successfully: coenraads.bracket-pair-colorizer-2
