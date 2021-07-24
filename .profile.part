@@ -1,0 +1,2 @@
+export XDG_DATA_DIRS="/home/florianfmmartin/.nix-profile/share/:$XDG_DATA_DIRS"
+PATH="$PATH:$HOME/bin"
