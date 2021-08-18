@@ -4,6 +4,6 @@
   "cursor-color": "#d4be98",
   "font": "VictorMono Nerd Font Mono 12",
   "foreground": "#d4be98",
-  "palette": "#32302f:#ea6962:#a9b665:#d8a657:#7daea3:#d3869b:#89b482:#3a3735:#32302f:#ea6962:#a9b665:#e78a4e:#7daea3:#d3869b:#89b482:#d3869b",
+  "palette": "#32302f:#ea6962:#a9b665:#d8a657:#7daea3:#d3869b:#89b482:#d4be98:#32302f:#ea6962:#a9b665:#e78a4e:#7daea3:#d3869b:#89b482:#d3869b",
   "unsafe-paste-alert": false
 }
