@@ -17,8 +17,9 @@
 	  alias ncg="nix-collect-garbage"
 	  alias ncgd="nix-collect-garbage -d"
 	  alias qq="exit"
-	  alias rr="ranger"
+	  alias rr="ranger --choosedir=/tmp/ranger_outdir && cd \$(cat /tmp/ranger_outdir)"
 	  alias uu="sudo apt update && sudo apt full-upgrade"
+	  alias vscode="code . & disown & exit"
 	  alias vv="nvim"
 	  alias zz="lazygit"
 	'';
@@ -27,15 +28,16 @@
     homeDirectory = "/home/fmartin";
     packages = with pkgs; [
       bat
-      chromium
       discord
       etcher
       firefox
+      gcc
       gimp
-      gnome3.gnome-boxes
       insomnia
       lazygit
       libreoffice
+      meson
+      nerdfonts
       neofetch
       nodejs
       nodejs-12_x
@@ -46,8 +48,9 @@
       spotify
       tree
       ueberzug
+      ungoogled-chromium
       unzip
-      victor-mono
+      vala
       vscode
       xclip
       xonsh
@@ -102,6 +105,16 @@
 	  format = "via [\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)";
 	  python_binary = "python3";
 	};
+      };
+    };
+  };
+  xdg = {
+    configFile = {
+      "ranger/rc.conf" = {
+        text = ''
+	  set column_ratios 3,5
+	  set show_hidden true
+	'';
       };
     };
   };
