@@ -10,19 +10,19 @@
     file = {
       ".bash_aliases" = {
         text = ''
-	  alias ".."="cd .."
-	  alias hme="home-manager edit"
-	  alias hms="home-manager switch"
-	  alias ls="ls -A --color=always"
-	  alias ncg="nix-collect-garbage"
-	  alias ncgd="nix-collect-garbage -d"
-	  alias qq="exit"
-	  alias rr="ranger --choosedir=/tmp/ranger_outdir && cd \$(cat /tmp/ranger_outdir)"
-	  alias uu="sudo apt update && sudo apt full-upgrade"
-	  alias vscode="code . & disown & exit"
-	  alias vv="nvim"
-	  alias zz="lazygit"
-	'';
+          alias ".."="cd .."
+          alias hme="home-manager edit"
+          alias hms="home-manager switch"
+          alias ls="ls -A --color=always"
+          alias ncg="nix-collect-garbage"
+          alias ncgd="nix-collect-garbage -d"
+          alias qq="exit"
+          alias rr="ranger --choosedir=/tmp/ranger_outdir && cd \$(cat /tmp/ranger_outdir)"
+          alias uu="sudo apt update && sudo apt full-upgrade"
+          alias vscode="code . & disown & exit"
+          alias vv="nvim"
+          alias zz="lazygit"
+        '';
       };
     };
     homeDirectory = "/home/fmartin";
@@ -48,6 +48,8 @@
       ranger
       ripgrep
       spotify
+      tmux
+      tmuxp
       tree
       ueberzug
       ungoogled-chromium
@@ -85,18 +87,88 @@
     };
     neovim = {
       enable = true;
+      extraConfig = ''
+        let mapleader = ","
+        set number
+        set signcolumn=yes
+        set linebreak
+        set breakindent
+        set breakindentopt="shift:4, sbr"
+        set showbreak=>-->
+        set scrolloff=8
+        set cursorline
+        set fillchars=vert:\|
+        hi! VertSplit ctermfg=145 guifg=#ECEFF4
+        hi! Comment cterm=bold gui=bold
+        set hidden
+        nnoremap gt :bnext<CR>
+        nnoremap gb :bprevious<CR>
+        nnoremap ge :bdelete!<CR>
+        set ignorecase
+        set listchars=eol:¬,space:·,tab:>\ 
+        set list
+        nnoremap ; :
+        nnoremap : ;
+        inoremap <C-Space> <C-X><C-O>
+        nnoremap <Space> w
+        nnoremap <BackSpace> b
+        set completeopt=menuone
+        inoremap ( ()<Left>
+        inoremap { {}<Left>
+        inoremap [ []<Left>
+        xnoremap K :move '<-2<CR>gv-gv
+        xnoremap J :move '>+1<CR>gv-gv
+        xnoremap < <<CR>gv-gv
+        xnoremap > ><CR>gv-gv
+        tnoremap <leader><leader> <C-\><C-n>
+        nnoremap <leader>tt :terminal<CR>
+        nnoremap <leader>te :e term://
+        nnoremap <leader>tg :e term://lazygit<CR>
+        autocmd TermOpen * exec "normal i"
+        nnoremap <leader>p :Commands<CR>
+      '';
       plugins = with pkgs.vimPlugins; [
         {
+          plugin = fzf-vim;
+          config = ''
+            let g:fzf_layout = {'window':{'width':1,'height':0.98}}
+            let g:fzf_preview_window = 'up:45%'
+            let g:fzf_colors =
+                              \ { 'fg':      ['fg', 'Normal'],
+                              \ 'bg':      ['bg', 'Normal'],
+                              \ 'hl':      ['fg', 'Title'],
+                              \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+                              \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+                              \ 'hl+':     ['fg', 'Statement'],
+                              \ 'info':    ['fg', 'PreProc'],
+                              \ 'gutter':  ['bg', 'Normal'],
+                              \ 'border':  ['fg', 'Ignore'],
+                              \ 'prompt':  ['fg', 'Conditional'],
+                              \ 'pointer': ['fg', 'Exception'],
+                              \ 'marker':  ['fg', 'Keyword'],
+                              \ 'spinner': ['fg', 'Label'],
+                              \ 'header':  ['fg', 'Comment'] }
+          '';
+        }
+        {
           plugin = gruvbox-material;
-	  config = ''
-	    set termguicolors
-	    let g:gruvbox_material_background = 'hard'
-	    colorscheme gruvbox-material
-	  '';
-	}
-	{
-	  plugin = vim-airline;
-	  config = ''
+          config = ''
+            set termguicolors
+            let g:gruvbox_material_background = 'hard'
+            colorscheme gruvbox-material
+          '';
+        }
+        ranger-vim
+        {
+          plugin = tcomment_vim;
+          config = ''
+            nnoremap <leader>c :TComment<CR>
+            vnoremap <leader>c :TComment<CR>
+          '';
+        }
+        {
+          plugin = vim-airline;
+          config = ''
             let g:airline_powerline_fonts = 1
             let g:airline_theme = 'lucius'
             let g:airline_section_error = '''
@@ -109,9 +181,39 @@
             let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
             let g:airline#extensions#term#enabled = 0
             set noshowmode
-	  '';
-	}
-	vim-airline-themes
+          '';
+        }
+        vim-airline-themes
+        vim-css-color
+        vim-polyglot
+        {
+          plugin = vim-signify;
+          config = ''
+            let g:signify_sign_change="~"
+          '';
+        }
+        {
+          plugin = vim-startify;
+          config = ''
+            let g:startify_lists = [
+            \ { 'type': 'commands', 'header': ['   Commands']},
+            \ { 'type': 'sessions', 'header': ['   Sessions']},
+            \ { 'type': 'dir',      'header': ['   MRU']},
+            \ ]
+
+            let g:startify_commands = []
+
+            let g:startify_custom_header = [
+            \ '                              _         ',
+            \ '       ____  ___  ____ _   __(_)___ ___ ',
+            \ '      / __ \/ _ \/ __ \ | / / / __ `__ \',
+            \ '     / / / /  __/ /_/ / |/ / / / / / / /',
+            \ '    /_/ /_/\___/\____/|___/_/_/ /_/ /_/ ',
+            \ ''',
+            \ ]
+          '';
+        }
+        vim-surround
       ];
       viAlias = true;
       vimAlias = true;
@@ -121,20 +223,20 @@
       enable = true;
       settings = {
         add_newline = false;
-	character = {
+        character = {
           error_symbol = "[➜](bold red)";
-	  success_symbol = "[➜](bold green)";
-	};
-	line_break = {
-	  disabled = true;
-	};
-	package = {
-	  disabled = true;
-	};
-	python = {
-	  format = "via [\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)";
-	  python_binary = "python3";
-	};
+          success_symbol = "[➜](bold green)";
+        };
+        line_break = {
+          disabled = true;
+        };
+        package = {
+          disabled = true;
+        };
+        python = {
+          format = "via [\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)";
+          python_binary = "python3";
+        };
       };
     };
   };
@@ -142,9 +244,9 @@
     configFile = {
       "ranger/rc.conf" = {
         text = ''
-	  set column_ratios 3,5
-	  set show_hidden true
-	'';
+          set column_ratios 3,5
+          set show_hidden true
+        '';
       };
     };
   };
