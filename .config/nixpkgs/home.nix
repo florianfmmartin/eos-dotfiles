@@ -33,6 +33,8 @@
       firefox
       gcc
       gimp
+      gnome.gnome-boxes
+      ideogram
       insomnia
       lazygit
       libreoffice
