@@ -24,6 +24,49 @@
           alias zz="lazygit"
         '';
       };
+      ".tmux.conf" = {
+        text = ''
+          # remap prefix from 'C-b'
+          unbind C-b
+          set-option -g prefix C-z
+          bind-key C-z send-prefix
+
+          # split panes using | and -
+          bind | split-window -h
+          bind - split-window -v
+          unbind '"'
+          unbind %
+
+          # reload config file (change file location to your the tmux.conf you want to use)
+          bind r source-file ~/.tmux.conf
+
+          # index from 1
+          set -g base-index 1
+          set -g pane-base-index 1
+
+          # switch panes using Alt-arrow without prefix
+          bind -n M-h select-pane -L
+          bind -n M-l select-pane -R
+          bind -n M-k select-pane -U
+          bind -n M-j select-pane -D
+
+          # switch panes with ESC deactivate
+          set -s escape-time 0
+
+          # don't rename windows automatically
+          set-option -g allow-rename off
+
+          # theme
+          set -g status-left "#[fg=black,bg=green] #S #[fg=green,bg=black] #[fg=white]"
+          set -g status-right ""
+
+          set -g status-bg black
+          set -g status-fg white
+
+          set -g window-status-format "#[fg=white,bg=black] #I  #W"
+          set -g window-status-current-format "#[fg=green,bg=black] #I  #W"
+        '';
+      };
     };
     homeDirectory = "/home/fmartin";
     packages = with pkgs; [
