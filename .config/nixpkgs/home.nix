@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   fonts = {
@@ -31,6 +31,9 @@
           set-option -g prefix C-z
           bind-key C-z send-prefix
 
+          # mouse
+          set -g mouse on 
+
           # split panes using | and -
           bind | split-window -h
           bind - split-window -v
@@ -57,14 +60,17 @@
           set-option -g allow-rename off
 
           # theme
-          set -g status-left "#[fg=black,bg=green] #S #[fg=green,bg=black] #[fg=white]"
-          set -g status-right ""
+          set -g status-left "#[fg=green,bg=black] #[fg=white]"
+          set -g status-right "#[fg=black,bg=green] #S "
 
           set -g status-bg black
           set -g status-fg white
 
           set -g window-status-format "#[fg=white,bg=black] #I  #W"
           set -g window-status-current-format "#[fg=green,bg=black] #I  #W"
+
+          # colors
+          set-option -ga terminal-overrides ",xterm-256color:Tc"
         '';
       };
     };
@@ -87,6 +93,8 @@
       nodejs
       nodejs-12_x
       nodePackages.npm
+      nodePackages.typescript
+      nodePackages.typescript-language-server
       pick-colour-picker
       ranger
       ripgrep
@@ -132,6 +140,10 @@
       enable = true;
       extraConfig = ''
         let mapleader = ","
+        set tabstop=4
+        set softtabstop=4
+        set shiftwidth=4
+        set expandtab
         set number
         set signcolumn=yes
         set linebreak
@@ -155,7 +167,7 @@
         inoremap <C-Space> <C-X><C-O>
         nnoremap <Space> w
         nnoremap <BackSpace> b
-        set completeopt=menuone
+        set completeopt=menuone,preview
         inoremap ( ()<Left>
         inoremap { {}<Left>
         inoremap [ []<Left>
@@ -169,8 +181,22 @@
         nnoremap <leader>tg :e term://lazygit<CR>
         autocmd TermOpen * exec "normal i"
         nnoremap <leader>p :Commands<CR>
+        nnoremap <C-Left> <C-W><C-H>
+        nnoremap <C-Down> <C-W><C-J>
+        nnoremap <C-Up> <C-W><C-K>
+        nnoremap <C-Right> <C-W><C-L>
+        nnoremap <Esc> :w<CR>
+        set mouse=a
+        augroup highlight_yank
+          autocmd!
+          autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+        augroup END
       '';
       plugins = with pkgs.vimPlugins; [
+        {
+          plugin = deoplete-nvim;
+          config = "let g:deoplete#enable_at_startup = 1";
+        }
         {
           plugin = fzf-vim;
           config = ''
@@ -199,6 +225,14 @@
             set termguicolors
             let g:gruvbox_material_background = 'hard'
             colorscheme gruvbox-material
+          '';
+        }
+        {
+          plugin = nvim-lspconfig;
+          config = ''
+            lua << END
+              require'lspconfig'.tsserver.setup{}
+            END
           '';
         }
         ranger-vim
