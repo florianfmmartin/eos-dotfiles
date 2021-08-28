@@ -1,5 +1,16 @@
 { config, pkgs, lib, ... }:
 
+let vim-rescript = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  pname = "vim-rescript";
+  version = "HEAD";
+  src = builtins.fetchGit {
+    url = "https://github.com/rescript-lang/vim-rescript.git";
+    ref = "HEAD";
+  };
+};
+
+in
+
 {
   fonts = {
     fontconfig = {
@@ -60,8 +71,8 @@
           set-option -g allow-rename off
 
           # theme
-          set -g status-left "#[fg=green,bg=black] #[fg=white]"
-          set -g status-right "#[fg=black,bg=green] #S "
+          set -g status-left "#[fg=white]"
+          set -g status-right "#[fg=green,bg=black]#[fg=black,bg=green] #S "
 
           set -g status-bg black
           set -g status-fg white
@@ -92,6 +103,8 @@
       neofetch
       nodejs
       nodejs-12_x
+      nodePackages.http-server
+      nodePackages.np
       nodePackages.npm
       nodePackages.typescript
       nodePackages.typescript-language-server
@@ -99,6 +112,7 @@
       ranger
       ripgrep
       spotify
+      teams
       tmux
       tmuxp
       tree
@@ -153,8 +167,6 @@
         set scrolloff=8
         set cursorline
         set fillchars=vert:\|
-        hi! VertSplit ctermfg=145 guifg=#ECEFF4
-        hi! Comment cterm=bold gui=bold
         set hidden
         nnoremap gt :bnext<CR>
         nnoremap gb :bprevious<CR>
@@ -167,7 +179,7 @@
         inoremap <C-Space> <C-X><C-O>
         nnoremap <Space> w
         nnoremap <BackSpace> b
-        set completeopt=menuone,preview
+        set completeopt=menuone
         inoremap ( ()<Left>
         inoremap { {}<Left>
         inoremap [ []<Left>
@@ -189,13 +201,19 @@
         set mouse=a
         augroup highlight_yank
           autocmd!
-          autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+          au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=300 }
         augroup END
+        autocmd BufNewFile,BufRead *.res  setfiletype rescript
+        autocmd BufNewFile,BufRead *.resi setfiletype rescript
       '';
       plugins = with pkgs.vimPlugins; [
         {
           plugin = deoplete-nvim;
           config = "let g:deoplete#enable_at_startup = 1";
+        }
+        {
+          plugin = float-preview-nvim;
+          config = "let g:float_preview#docked = 0";
         }
         {
           plugin = fzf-vim;
@@ -231,7 +249,12 @@
           plugin = nvim-lspconfig;
           config = ''
             lua << END
+              vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
               require'lspconfig'.tsserver.setup{}
+              require'lspconfig'.rescriptls.setup{
+                cmd = { 'node', '/home/fmartin/Code/vim-rescript/server/out/server.js', '--stdio' }
+              }
             END
           '';
         }
@@ -263,6 +286,7 @@
         vim-airline-themes
         vim-css-color
         vim-polyglot
+        vim-rescript
         {
           plugin = vim-signify;
           config = ''
