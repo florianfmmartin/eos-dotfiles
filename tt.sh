@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 if [[ -z "$TMUX" && -z "$VIRTUAL_ENV" && -z "$PIPENV_ACTIVE" ]]
 then
     TMUXLS=$(tmux ls 2>&1)
