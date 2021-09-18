@@ -11,6 +11,17 @@ let vim-rescript = pkgs.vimUtils.buildVimPluginFrom2Nix {
 
 in
 
+let vim-hy = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  pname = "vim-hy";
+  version = "HEAD";
+  src = builtins.fetchGit {
+    url = "https://github.com/hylang/vim-hy";
+    ref = "HEAD";
+  };
+};
+
+in
+
 {
   fonts = {
     fontconfig = {
@@ -88,15 +99,26 @@ in
     homeDirectory = "/home/fmartin";
     packages = with pkgs; [
       bat
+      bear
+      clang-tools
+      clojure
+      clojure-lsp
+      cmake
       discord
+      # docker -- install via apt for daemon
+      elixir
       etcher
-      firefox
+      # firefox -- install via apt for opengl
       gcc
+      gdb
       gimp
-      gnome.gnome-boxes
+      # gnome.gnome-boxes --install via apt
       ideogram
       insomnia
+      jdk
+      jupyter
       lazygit
+      leiningen
       libreoffice
       meson
       nerdfonts
@@ -109,6 +131,10 @@ in
       nodePackages.typescript
       nodePackages.typescript-language-server
       pick-colour-picker
+      python38Packages.pip
+      python38Packages.python-lsp-server
+      python38Packages.virtualenv
+      racket
       ranger
       ripgrep
       spotify
@@ -121,6 +147,8 @@ in
       unzip
       vala
       vscode
+      wine
+      wireshark
       xclip
       xonsh
       yarn
@@ -144,6 +172,11 @@ in
     };
     git = {
       enable = true;
+      extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
+      };
       userEmail = "florian.fm.martin@gmail.com";
       userName = "florianfmmartin";
     };
@@ -255,7 +288,18 @@ in
               require'lspconfig'.rescriptls.setup{
                 cmd = { 'node', '/home/fmartin/Code/vim-rescript/server/out/server.js', '--stdio' }
               }
+              require'lspconfig'.clangd.setup{}
+              require'lspconfig'.pylsp.setup{}
+              require'lspconfig'.clojure_lsp.setup{}
+              require'lspconfig'.racket_langserver.setup{}
             END
+          '';
+        }
+        rainbow
+        {
+          plugin = rainbow;
+          config = ''
+            let g:rainbow_active = 1
           '';
         }
         ranger-vim
@@ -285,7 +329,14 @@ in
         }
         vim-airline-themes
         vim-css-color
+        {
+          plugin = vim-hy;
+          config = ''
+            let g:hy_enable_conceal = 1
+          '';
+        }
         vim-polyglot
+        vim-racket
         vim-rescript
         {
           plugin = vim-signify;
@@ -302,7 +353,9 @@ in
             \ { 'type': 'dir',      'header': ['   MRU']},
             \ ]
 
-            let g:startify_commands = []
+            let g:startify_commands = [
+            \ { 't': ':term' }
+            \ ]
 
             let g:startify_custom_header = [
             \ '                              _         ',
