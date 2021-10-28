@@ -44,6 +44,7 @@ in
           alias vscode="code . & disown & exit"
           alias vv="nvim"
           alias zz="lazygit"
+          alias clj="rlwrap clojure"
         '';
       };
       ".tmux.conf" = {
@@ -101,12 +102,14 @@ in
       bat
       bear
       clang-tools
+      clj-kondo
       clojure
       clojure-lsp
       cmake
       discord
       # docker -- install via apt for daemon
       elixir
+      erlang
       etcher
       # firefox -- install via apt for opengl
       gcc
@@ -123,6 +126,8 @@ in
       meson
       nerdfonts
       neofetch
+      nim
+      nimlsp
       nodejs
       nodejs-12_x
       nodePackages.http-server
@@ -212,7 +217,7 @@ in
         inoremap <C-Space> <C-X><C-O>
         nnoremap <Space> w
         nnoremap <BackSpace> b
-        set completeopt=menuone
+        set completeopt=noselect,menuone
         inoremap ( ()<Left>
         inoremap { {}<Left>
         inoremap [ []<Left>
@@ -241,8 +246,25 @@ in
       '';
       plugins = with pkgs.vimPlugins; [
         {
+          plugin = conjure;
+          config = ''
+            let g:conjure#log#hud#height = 1
+            let mapleader = ","
+            let maplocalleader = ","
+          '';
+        }
+        {
+          plugin = deoplete-lsp;
+          config = "";
+        }
+        {
           plugin = deoplete-nvim;
-          config = "let g:deoplete#enable_at_startup = 1";
+          config = ''
+            let g:deoplete#enable_at_startup = 1
+            call deoplete#custom#option('sources', {
+            \ '_': ['buffer', 'lsp'],
+            \})
+          '';
         }
         {
           plugin = float-preview-nvim;
@@ -292,6 +314,7 @@ in
               require'lspconfig'.pylsp.setup{}
               require'lspconfig'.clojure_lsp.setup{}
               require'lspconfig'.racket_langserver.setup{}
+              require'lspconfig'.nimls.setup{}
             END
           '';
         }
@@ -302,10 +325,14 @@ in
             let g:rainbow_active = 1
           '';
         }
-        ranger-vim
+        {
+          plugin = ranger-vim;
+          config = "nnoremap ,rr :RangerEdit<CR>";
+        }
         {
           plugin = tcomment_vim;
           config = ''
+            let mapleader = ","
             nnoremap <leader>c :TComment<CR>
             vnoremap <leader>c :TComment<CR>
           '';
@@ -345,6 +372,17 @@ in
           '';
         }
         {
+          plugin = vim-slime;
+          config = ''
+            let mapleader = ","
+            let g:slime_target = 'neovim'
+            let g:slime_no_mappings = 1
+            xmap <leader>ss <Plug>SlimeRegionSend
+            nmap <leader>sp <Plug>SlimeParagraphSend
+            nmap <leader>sv <Plug>SlimeConfig
+          '';
+        }
+        {
           plugin = vim-startify;
           config = ''
             let g:startify_lists = [
@@ -354,7 +392,8 @@ in
             \ ]
 
             let g:startify_commands = [
-            \ { 't': ':term' }
+            \ { 't': ':term' },
+            \ { 'r': ':RangerEdit' }
             \ ]
 
             let g:startify_custom_header = [
