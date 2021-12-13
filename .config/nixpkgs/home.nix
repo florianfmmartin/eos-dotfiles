@@ -8,7 +8,6 @@ let vim-rescript = pkgs.vimUtils.buildVimPluginFrom2Nix {
     ref = "HEAD";
   };
 };
-
 in
 
 let vim-hy = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -19,7 +18,6 @@ let vim-hy = pkgs.vimUtils.buildVimPluginFrom2Nix {
     ref = "HEAD";
   };
 };
-
 in
 
 {
@@ -34,7 +32,7 @@ in
         text = ''
           alias ".."="cd .."
           alias hme="home-manager edit"
-          alias hms="home-manager switch"
+          alias hms="home-manager switch && nix-collect-garbage -d"
           alias ls="ls -A --color=always"
           alias ncg="nix-collect-garbage"
           alias ncgd="nix-collect-garbage -d"
@@ -101,6 +99,7 @@ in
     packages = with pkgs; [
       bat
       bear
+      binaryen
       clang-tools
       clj-kondo
       clojure
@@ -111,8 +110,9 @@ in
       elixir
       erlang
       etcher
+      inkscape
+      ipfs
       # firefox -- install via apt for opengl
-      gcc
       gdb
       gimp
       # gnome.gnome-boxes --install via apt
@@ -124,6 +124,7 @@ in
       leiningen
       libreoffice
       meson
+      mypy
       nerdfonts
       neofetch
       nim
@@ -135,6 +136,7 @@ in
       nodePackages.npm
       nodePackages.typescript
       nodePackages.typescript-language-server
+      pandoc
       pick-colour-picker
       python38Packages.pip
       python38Packages.python-lsp-server
@@ -142,18 +144,21 @@ in
       racket
       ranger
       ripgrep
+      rustup
+      slack
       spotify
+      sqlite
       teams
       tmux
       tmuxp
+      trash-cli
       tree
       ueberzug
       ungoogled-chromium
       unzip
       vala
       vscode
-      wine
-      wireshark
+      wabt
       xclip
       xonsh
       yarn
@@ -236,6 +241,7 @@ in
         nnoremap <C-Up> <C-W><C-K>
         nnoremap <C-Right> <C-W><C-L>
         nnoremap <Esc> :w<CR>
+        nnoremap ,uu ggO---<Esc>O
         set mouse=a
         augroup highlight_yank
           autocmd!
@@ -264,6 +270,19 @@ in
             call deoplete#custom#option('sources', {
             \ '_': ['buffer', 'lsp'],
             \})
+          '';
+        }
+        {
+          plugin = fern-vim;
+          config = ''
+            nnoremap ,ff :Fern . -drawer -toggle<CR>
+            function! s:init_fern() abort
+              nmap <CR> l
+            endfunction
+            augroup fern-custom
+              autocmd! *
+              autocmd FileType fern call s:init_fern()
+            augroup END
           '';
         }
         {
@@ -315,6 +334,7 @@ in
               require'lspconfig'.clojure_lsp.setup{}
               require'lspconfig'.racket_langserver.setup{}
               require'lspconfig'.nimls.setup{}
+              require'lspconfig'.rls.setup{}
             END
           '';
         }
@@ -341,7 +361,7 @@ in
           plugin = vim-airline;
           config = ''
             let g:airline_powerline_fonts = 1
-            let g:airline_theme = 'lucius'
+            let g:airline_theme = 'gruvbox_material'
             let g:airline_section_error = '''
             let g:airline_section_warning = '''
             let g:airline#extensions#tabline#enabled = 1
