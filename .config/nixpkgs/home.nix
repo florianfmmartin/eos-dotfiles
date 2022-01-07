@@ -130,9 +130,6 @@ in
       nim
       nimlsp
       nodejs
-      nodejs-12_x
-      nodePackages.http-server
-      nodePackages.np
       nodePackages.npm
       nodePackages.typescript
       nodePackages.typescript-language-server
@@ -143,6 +140,7 @@ in
       python38Packages.virtualenv
       racket
       ranger
+      rawtherapee
       ripgrep
       rustup
       slack
