@@ -1,3 +1,25 @@
+call plug#begin()
+
+Plug 'deoplete-plugins/deoplete-lsp'
+Plug 'Shougo/deoplete-nvim'
+Plug 'lambdalisue/fern.vim'
+Plug 'ncm2/float-preview.nvim'
+Plug 'junegunn/fzf.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'neovim/nvim-lspconfig'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
+Plug 'sheerun/vim-polyglot'
+Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'rafaqz/ranger.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'luochen1990/rainbow'
+
+call plug#end()
+
 " conjure {{{
 let g:conjure#log#hud#height = 1
 let mapleader = ","
