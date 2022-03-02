@@ -1,5 +1,0 @@
-# home-manager
-. /home/fmartin/.nix-profile/etc/profile.d/hm-session-vars.sh
-
-export XDG_DATA_DIRS="/home/fmartin/.nix-profile/share/:$XDG_DATA_DIRS"
-PATH="$PATH:$HOME/bin"
