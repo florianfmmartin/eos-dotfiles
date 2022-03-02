@@ -11,7 +11,6 @@ gnome-boxes
 openjdk-17-jdk
 libreoffice
 neofetch
-neovim
 python3-pip
 virtualenv
 ranger
@@ -48,3 +47,4 @@ nerdfonts
 nvm
 starship
 vim-plug
+neovim nightly
