@@ -47,3 +47,4 @@ balena
 nerdfonts
 nvm
 starship
+vim-plug
