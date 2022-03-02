@@ -1,0 +1,15 @@
+add_newline = false
+
+[character]
+error_symbol = "[➜](bold red)"
+success_symbol = "[➜](bold green)"
+
+[line_break]
+disabled = true
+
+[package]
+disabled = true
+
+[python]
+format = "via [${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
+python_binary = "python3"

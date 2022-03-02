@@ -1,0 +1,48 @@
+# Apt
+bat
+chromium-browser
+docker
+firefox
+fzf
+gdb
+gimp
+git
+gnome-boxes
+openjdk-17-jdk
+libreoffice
+neofetch
+neovim
+python3-pip
+virtualenv
+ranger
+ripgrep
+stow
+tmux
+trash-cli
+tree
+xclip
+yarnpkg
+
+# Pip
+python-lsp-server
+
+# PPA
+crystal
+lazygit
+spotify
+
+# Eddy
+discord
+glow
+insomnia
+slack
+teams
+vscode
+
+# AppImage
+balena
+
+# Manual
+nerdfonts
+nvm
+starship
