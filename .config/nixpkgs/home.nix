@@ -1,24 +1,24 @@
 { config, pkgs, lib, ... }:
 
-let vim-rescript = pkgs.vimUtils.buildVimPluginFrom2Nix {
-  pname = "vim-rescript";
-  version = "HEAD";
-  src = builtins.fetchGit {
-    url = "https://github.com/rescript-lang/vim-rescript.git";
-    ref = "HEAD";
-  };
-};
-in
-
-let vim-hy = pkgs.vimUtils.buildVimPluginFrom2Nix {
-  pname = "vim-hy";
-  version = "HEAD";
-  src = builtins.fetchGit {
-    url = "https://github.com/hylang/vim-hy";
-    ref = "HEAD";
-  };
-};
-in
+# let vim-rescript = pkgs.vimUtils.buildVimPluginFrom2Nix {
+#   pname = "vim-rescript";
+#   version = "HEAD";
+#   src = builtins.fetchGit {
+#     url = "https://github.com/rescript-lang/vim-rescript.git";
+#     ref = "HEAD";
+#   };
+# };
+# in
+#
+# let vim-hy = pkgs.vimUtils.buildVimPluginFrom2Nix {
+#   pname = "vim-hy";
+#   version = "HEAD";
+#   src = builtins.fetchGit {
+#     url = "https://github.com/hylang/vim-hy";
+#     ref = "HEAD";
+#   };
+# };
+# in
 
 {
   fonts = {
@@ -43,6 +43,7 @@ in
           alias vv="nvim"
           alias zz="lazygit"
           alias clj="rlwrap clojure"
+          alias fd="cd \$(tree -indlf | fzf)"
         '';
       };
       ".tmux.conf" = {
@@ -99,50 +100,58 @@ in
     packages = with pkgs; [
       bat
       bear
-      binaryen
+      clang
       clang-tools
       clj-kondo
       clojure
       clojure-lsp
       cmake
-      discord
+      # deno
+      # discord
       # docker -- install via apt for daemon
-      elixir
-      erlang
+      # elixir
+      # erlang
       etcher
-      inkscape
-      ipfs
+      # inkscape
+      # ipfs
       # firefox -- install via apt for opengl
       gdb
       gimp
+      glow
       # gnome.gnome-boxes --install via apt
-      ideogram
+      # ideogram
       insomnia
       jdk
-      jupyter
+      # jupyter
       lazygit
       leiningen
       libreoffice
-      meson
-      mypy
+      maven
+      # meson
+      # mypy
       nerdfonts
       neofetch
-      nim
-      nimlsp
+      # nim
+      # nimlsp
       nodejs
+      # nodePackages.esy
       nodePackages.npm
       nodePackages.typescript
       nodePackages.typescript-language-server
+      # ocaml
+      openssl
       pandoc
       pick-colour-picker
       python38Packages.pip
       python38Packages.python-lsp-server
       python38Packages.virtualenv
-      racket
+      # racket
       ranger
-      rawtherapee
+      # rawtherapee
       ripgrep
       rustup
+      # signal-desktop
+      shards
       slack
       spotify
       sqlite
@@ -151,14 +160,12 @@ in
       tmuxp
       trash-cli
       tree
-      ueberzug
-      ungoogled-chromium
+      google-chrome
       unzip
-      vala
+      # vala
       vscode
-      wabt
+      # wabt
       xclip
-      xonsh
       yarn
       zip
     ];
@@ -171,6 +178,9 @@ in
   nixpkgs = {
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-12.2.3"
+      ];
     };
   };
   programs = {
@@ -374,15 +384,15 @@ in
         }
         vim-airline-themes
         vim-css-color
-        {
-          plugin = vim-hy;
-          config = ''
-            let g:hy_enable_conceal = 1
-          '';
-        }
+        # {
+        #   plugin = vim-hy;
+        #   config = ''
+        #     let g:hy_enable_conceal = 1
+        #   '';
+        # }
         vim-polyglot
         vim-racket
-        vim-rescript
+        # vim-rescript
         {
           plugin = vim-signify;
           config = ''
