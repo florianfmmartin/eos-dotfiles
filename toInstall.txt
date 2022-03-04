@@ -1,30 +1,25 @@
 # Apt
-bat
-chromium-browser
-docker
-firefox
-fzf
-gdb
-gimp
-git
-gnome-boxes
-openjdk-17-jdk
-libreoffice
-neofetch
-python3-pip
-virtualenv
-ranger
-ripgrep
-stow
-tmux
-trash-cli
-tree
-xclip
-yarnpkg
+bat \
+docker \
+firefox \
+fzf \
+gdb \
+gimp \
+git \
+gnome-boxes \
+openjdk-17-jdk \
+libreoffice \
+linux-headers-$(uname -r) \
+neofetch \
+python3-pip \
+virtualenv \
+ranger \
+stow \
+tmux \
+trash-cli \
+tree \
+xclip \
 virtualbox
-
-# Pip
-python-lsp-server
 
 # PPA
 crystal
@@ -45,6 +40,8 @@ balena
 # Manual
 nerdfonts
 nvm
+yarn
 starship
 vim-plug
 neovim nightly
+chromium
