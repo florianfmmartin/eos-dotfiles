@@ -19,7 +19,8 @@ tmux \
 trash-cli \
 tree \
 xclip \
-virtualbox
+virtualbox \
+vlc
 
 # PPA
 crystal
