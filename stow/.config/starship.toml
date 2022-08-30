@@ -13,3 +13,9 @@ disabled = true
 [python]
 format = "via [${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
 python_binary = "python3"
+
+[gcloud]
+disabled = true
+
+[aws]
+disabled = true

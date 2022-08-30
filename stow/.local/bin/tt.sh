@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 if [[ -z "$TMUX" && -z "$VIRTUAL_ENV" && -z "$PIPENV_ACTIVE" ]]
 then
+    echo $PWD
+    echo
+
     TMUXLS=$(tmux ls 2>&1)
     if [[ "$TMUXLS" == "no server running on /tmp/tmux-1000/default" || "$TMUXLS" == "error connecting to /tmp/tmux-1000/default (No such file or directory)" ]]
     then
